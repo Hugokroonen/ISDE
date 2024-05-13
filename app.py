@@ -11,12 +11,51 @@ st.set_page_config(
     menu_items={"Get help" : 'https://www.rvo.nl'}
 )
 
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Apply the font family to all elements */
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Center align text in main container */
+main .block-container {
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Override Streamlit's default alignment for markdown text, including headers */
+.markdown-text-container, .markdown-text-container h1, .markdown-text-container h2, .markdown-text-container h3 {
+    text-align: center !important;
+}
+
+/* Center images and buttons */
+.stImage, .stButton>button {
+    margin: 0 auto !important;
+    display: block;
+}
+
+/* Custom class for specifically aligned text if necessary */
+.custom-text {
+    text-align: center;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
+
 class Measure:
     def __init__(self, name, options, icon_path, subsidy_file=None):
         self.name = name
         self.options = options
         self.icon_path = icon_path
         self.subsidy_file = subsidy_file
+    
 
 class SubsidyApp:
     def __init__(self):
@@ -39,15 +78,18 @@ class SubsidyApp:
         # 1. Welcome page 
         if 'check_started' not in st.session_state:
             with st.form(key='start_check'):
-                st.markdown("<h3 style='color: #00007E;'>Begeleiding bij ISDE subsidie aanvragen</h3>", unsafe_allow_html=True)
-                st.image("Wendy.png", caption="Samen ISDE aanvragen", use_column_width=False)
+                st.markdown("<h3 style='color: #00007E; text-align: center;'>Begeleiding bij ISDE subsidie aanvragen</h3>", unsafe_allow_html=True)
+                column1, column2, colum3 = st.columns(3)
+                with column2:
+                    st.image("Wendy.png", caption="Samen ISDE aanvragen", use_column_width=False)
                 check_started = st.form_submit_button("Start ISDE check")
                 if check_started:
                     st.session_state.check_started = True
 
+
         # 2. Check started 
         if 'check_started' in st.session_state and st.session_state.measure is None:
-            st.markdown("<h3 style='color: #00007E;'>Kies voor welke maatregelen je subsidie aan wilt vragen</h3>", unsafe_allow_html=True)
+            st.markdown("<h3 style='color: #00007E; text-align: center;'>Kies een maatregel voor de subsidieaanvraag</h3>", unsafe_allow_html=True)
             # Display clickable icons for each measure option
             #for measure in self.measures:
              #   st.image(measure.icon_path, use_column_width=False)
@@ -57,16 +99,18 @@ class SubsidyApp:
 
             for i, measure in enumerate(self.measures):
                 with columns[i]:
-                    st.image(measure.icon_path, width=75)  # Set use_column_width to True for better sizing within the column
+                    column1, column2, column3 = st.columns(3)
+                    with column2:
+                        st.image(measure.icon_path, width=75)  # Set use_column_width to True for better sizing within the column
                     # Include a checkbox with a hidden label
-                    if st.checkbox("", key=measure.name, help=measure.name, label_visibility='visible'):
-                        st.session_state.measure = measure
+                        if st.checkbox("", key=measure.name, help=measure.name, label_visibility='visible'):
+                            st.session_state.measure = measure
 
 
         # 3. Heatpump selected 
         if st.session_state.measure is not None:
             if st.session_state.measure.name == 'Warmtepomp':
-                    st.markdown("<h3 style='color: #00007E;'>Type warmtepomp</h3>", unsafe_allow_html=True)
+                    st.markdown("<h3 style='color: #00007E; text-align: center;'>Type warmtepomp</h3>", unsafe_allow_html=True)
                     with st.form(key="choose_heatpump_type"):
                         measure_type = st.selectbox(
                             "Zoek het type warmtepomp", 
@@ -83,7 +127,7 @@ class SubsidyApp:
         # 3. Insulation selected 
         if st.session_state.measure is not None:
             if st.session_state.measure.name == 'Isolatie':
-                    st.markdown("<h3 style='color: #00007E;'>Type isolatie</h3>", unsafe_allow_html=True)
+                    st.markdown("<h3 style='color: #00007E; text-align: center;'>Type isolatie</h3>", unsafe_allow_html=True)
                     with st.form(key="choose_insulation_type"):
                         measure_type = st.selectbox(
                             "Selecteer het type isolatie", 
