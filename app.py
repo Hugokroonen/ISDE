@@ -77,7 +77,7 @@ class SubsidyApp:
 
         # 1. Welcome page 
         if 'check_started' not in st.session_state:
-            with st.form(key='start_check'):
+            with st.form(key='start_check', border=False):
                 st.markdown("<h3 style='color: #00007E; text-align: center;'>Begeleiding bij ISDE subsidie aanvragen</h3>", unsafe_allow_html=True)
                 column1, column2, colum3 = st.columns(3)
                 with column2:
@@ -111,7 +111,7 @@ class SubsidyApp:
         if st.session_state.measure is not None:
             if st.session_state.measure.name == 'Warmtepomp':
                     st.markdown("<h3 style='color: #00007E; text-align: center;'>Type warmtepomp</h3>", unsafe_allow_html=True)
-                    with st.form(key="choose_heatpump_type"):
+                    with st.form(key="choose_heatpump_type", border=False):
                         measure_type = st.selectbox(
                             "Zoek het type warmtepomp", 
                             HEATPUMP_OPTIONS, 
@@ -128,7 +128,7 @@ class SubsidyApp:
         if st.session_state.measure is not None:
             if st.session_state.measure.name == 'Isolatie':
                     st.markdown("<h3 style='color: #00007E; text-align: center;'>Type isolatie</h3>", unsafe_allow_html=True)
-                    with st.form(key="choose_insulation_type"):
+                    with st.form(key="choose_insulation_type", border=False):
                         measure_type = st.selectbox(
                             "Selecteer het type isolatie", 
                             INSULATION_OPTIONS, 
@@ -151,7 +151,7 @@ class SubsidyApp:
 
             # Isolatie (behalve glas)
             if st.session_state.measure.name == "Isolatie" and measure_type.value != 'window_insulation':
-                with st.form(key="choose_insulated_m2"):
+                with st.form(key="choose_insulated_m2", border=False):
                     # Numeric input for entering a number
                     number = st.number_input("Hoe veel M2 heb je geïsoleerd?", key='number_input')
                     # Submit button for the form
@@ -168,7 +168,7 @@ class SubsidyApp:
 
             # Glas isolatie 
             if st.session_state.measure.name == "Isolatie" and measure_type.value == 'window_insulation':
-                with st.form(key="choose_type_window"):
+                with st.form(key="choose_type_window", border=False):
                         measure_type = st.selectbox(
                             "Triple of HR?", 
                             GLASS_OPTIONS, 
@@ -181,7 +181,7 @@ class SubsidyApp:
 
             if st.session_state.glass_type_done:
                     # New form for choosing options
-                    with st.form(key="options_form"):
+                    with st.form(key="options_form", border=False):
                         st.text('Kies of je een of meerdere van de volgende maatregelen getroffen hebt')
                         option1 = st.checkbox("Isolerende panelen in kozijnen", key='panelen')
                         option2 = st.checkbox("Isolerende deuren", key='deuren')
@@ -194,7 +194,7 @@ class SubsidyApp:
 
                     if st.session_state.submit_options and st.session_state.glass_type_done:
                         if option3 and not option1 and not option2:
-                            with st.form(key="choose_insulated_m2"):
+                            with st.form(key="choose_insulated_m2", border=False):
                                 # Numeric input for entering a number
                                 m2 = st.number_input("Hoe veel M2 heb je geïsoleerd?", key='number_input')
                                 # Submit button for the for
