@@ -11,14 +11,6 @@ st.set_page_config(
     menu_items={"Get help" : 'https://www.rvo.nl'}
 )
 
-# CSS to hide the footer completely
-hide_streamlit_style = """
-            <style>
-            footer {display: none !important;} /* Hides the footer completely */
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
 class Measure:
     def __init__(self, name, options, icon_path, subsidy_file=None):
         self.name = name
@@ -29,9 +21,9 @@ class Measure:
 class SubsidyApp:
     def __init__(self):
         self.measures = [
-            Measure("heatpump", HEATPUMP_OPTIONS, "heatpump_icon.png", "/path/to/heatpump_subsidy.pdf"),
-            Measure("insulation", INSULATION_OPTIONS, "insulation_icon.png"),
-            Measure('zonneboiler', None, 'solar_icon.png')
+            Measure("Warmtepomp", HEATPUMP_OPTIONS, "heatpump_icon.png", "/path/to/heatpump_subsidy.pdf"),
+            Measure("Isolatie", INSULATION_OPTIONS, "insulation_icon.png"),
+            #Measure('zonneboiler', None, 'solar_icon.png')
         ]
         self.selected_measure = None # next job: deze gebruiken ipv st session state! Hij lijkt deze alleen niet te onthouden... 
         self.selected_type = None
@@ -65,19 +57,19 @@ class SubsidyApp:
 
             for i, measure in enumerate(self.measures):
                 with columns[i]:
-                    st.image(measure.icon_path, width=60)  # Set use_column_width to True for better sizing within the column
+                    st.image(measure.icon_path, width=75)  # Set use_column_width to True for better sizing within the column
                     # Include a checkbox with a hidden label
-                    if st.checkbox("Select", key=measure.name, value=False, help=measure.name, label_visibility='collapsed'):
+                    if st.checkbox("", key=measure.name, help=measure.name, label_visibility='visible'):
                         st.session_state.measure = measure
 
 
         # 3. Heatpump selected 
         if st.session_state.measure is not None:
-            if st.session_state.measure.name == 'heatpump':
-                    st.markdown("<h3 style='color: #00007E;'>Selecteer type warmtepomp</h3>", unsafe_allow_html=True)
+            if st.session_state.measure.name == 'Warmtepomp':
+                    st.markdown("<h3 style='color: #00007E;'>Type warmtepomp</h3>", unsafe_allow_html=True)
                     with st.form(key="choose_heatpump_type"):
                         measure_type = st.selectbox(
-                            "Welke warmtepomp heb je aangeschaft", 
+                            "Zoek het type warmtepomp", 
                             HEATPUMP_OPTIONS, 
                             format_func=format_option,
                             key = 'heatpump_selectbox'
@@ -85,16 +77,16 @@ class SubsidyApp:
 
                         measureTypeSelectionDone = st.form_submit_button("Check subsidie")
                     if measureTypeSelectionDone:
-                        st.write("Je hebt gekozen voor de volgende maatregel:", measure_type.text)
+                        st.write("Je hebt gekozen voor het type warmtepomp:", measure_type.text)
                         st.session_state.measure_type = measure_type
 
         # 3. Insulation selected 
         if st.session_state.measure is not None:
-            if st.session_state.measure.name == 'insulation':
-                    st.markdown("<h3 style='color: #00007E;'>Selecteer type isolatie</h3>", unsafe_allow_html=True)
+            if st.session_state.measure.name == 'Isolatie':
+                    st.markdown("<h3 style='color: #00007E;'>Type isolatie</h3>", unsafe_allow_html=True)
                     with st.form(key="choose_insulation_type"):
                         measure_type = st.selectbox(
-                            "Welke isolatie heb je gedaan", 
+                            "Selecteer het type isolatie", 
                             INSULATION_OPTIONS, 
                             format_func=format_option,
                             key = 'insulation_selextbox'
@@ -102,19 +94,19 @@ class SubsidyApp:
 
                         measureTypeSelectionDone = st.form_submit_button("Verder")
                     if measureTypeSelectionDone:
-                        st.write("Je hebt gekozen voor de volgende maatregel:", measure_type.text)
+                        st.write("Je hebt gekozen het type isolatie:", measure_type.text)
                         st.session_state.measure_type = measure_type
 
         # 4. Subsidy calculation
         if 'measure_type' in st.session_state:
             
             # Warmtepomp 
-            if st.session_state.measure.name == 'heatpump':
+            if st.session_state.measure.name == 'Warmtepomp':
             # Read PDF and find subsidy amount based on selected measure_type
                 self.subsidy_amount = get_heatpump_subsidy_amount(st.session_state.measure_type)
 
             # Isolatie (behalve glas)
-            if st.session_state.measure.name == "insulation" and measure_type.value != 'window_insulation':
+            if st.session_state.measure.name == "Isolatie" and measure_type.value != 'window_insulation':
                 with st.form(key="choose_insulated_m2"):
                     # Numeric input for entering a number
                     number = st.number_input("Hoe veel M2 heb je geïsoleerd?", key='number_input')
@@ -131,7 +123,7 @@ class SubsidyApp:
                 st.session_state.glass_type_done = False
 
             # Glas isolatie 
-            if st.session_state.measure.name == "insulation" and measure_type.value == 'window_insulation':
+            if st.session_state.measure.name == "Isolatie" and measure_type.value == 'window_insulation':
                 with st.form(key="choose_type_window"):
                         measure_type = st.selectbox(
                             "Triple of HR?", 
