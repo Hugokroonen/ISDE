@@ -2,7 +2,7 @@
 from pypdf import PdfReader 
   
 # creating a pdf reader object 
-reader = PdfReader('/Users/hugokroonen/ISDE-regelhulp/warmtepompen.pdf') 
+reader = PdfReader('warmtepompen.pdf') 
   
 # Iterate through all pages
 for page_number in range(len(reader.pages)):
