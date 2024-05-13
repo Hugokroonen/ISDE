@@ -11,6 +11,14 @@ st.set_page_config(
     menu_items={"Get help" : 'https://www.rvo.nl'}
 )
 
+# CSS to hide the footer completely
+hide_streamlit_style = """
+            <style>
+            footer {display: none !important;} /* Hides the footer completely */
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 class Measure:
     def __init__(self, name, options, icon_path, subsidy_file=None):
         self.name = name
