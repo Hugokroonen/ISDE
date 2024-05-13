@@ -2,7 +2,7 @@ import re
 from pypdf import PdfReader
 
 # Creating a pdf reader object 
-reader = PdfReader('/Users/hugokroonen/Downloads/warmtepompen.pdf')
+reader = PdfReader('/Users/hugokroonen/ISDE-regelhulp/warmtepompen.pdf')
 
 # List to hold all the options
 options = [
