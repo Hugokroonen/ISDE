@@ -90,7 +90,7 @@ class SubsidyApp:
         # 2. Check started 
         #if 'check_started' in st.session_state and st.session_state.measure is None:
         if st.session_state.measure is None:
-            st.markdown("<h3 style='color: #00007E; text-align: center;'>Kies een maatregel voor de subsidieaanvraag</h3>", unsafe_allow_html=True)
+            #st.markdown("<h3 style='color: #00007E; text-align: center;'>Kies een maatregel voor de subsidieaanvraag</h3>", unsafe_allow_html=True)
             # Display clickable icons for each measure option
             #for measure in self.measures:
              #   st.image(measure.icon_path, use_column_width=False)
