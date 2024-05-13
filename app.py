@@ -78,10 +78,10 @@ class SubsidyApp:
         # 1. Welcome page 
         if 'check_started' not in st.session_state:
             with st.form(key='start_check', border=False):
-                st.markdown("<h2 style='color: #00007E; text-align: center;'>Begeleiding bij ISDE aanvraag </h2>", unsafe_allow_html=True)
-                column1, column2, colum3 = st.columns(3)
-                with column2:
-                    st.image("Wendy.png", caption="Samen ISDE aanvragen", use_column_width=False)
+                #st.markdown("<h2 style='color: #00007E; text-align: center;'>Begeleiding bij ISDE aanvraag </h2>", unsafe_allow_html=True)
+                #column1, column2, colum3 = st.columns(3)
+                #with column2:
+                    #st.image("Wendy.png", caption="Samen ISDE aanvragen", use_column_width=False)
                 check_started = st.form_submit_button("Start ISDE check")
                 if check_started:
                     st.session_state.check_started = True
