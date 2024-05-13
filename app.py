@@ -110,7 +110,6 @@ class SubsidyApp:
             if st.button('Start ISDE check'):
                 if selected_measure:
                     st.session_state.measure = selected_measure
-                    st.success(f"Je hebt gekozen voor {st.session_state.measure}")
                 else:
                     st.error("Selecteer eerst een maatregel.")
 
