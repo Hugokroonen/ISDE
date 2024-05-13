@@ -76,19 +76,20 @@ class SubsidyApp:
             st.session_state.measure = None    
 
         # 1. Welcome page 
-        if 'check_started' not in st.session_state:
-            with st.form(key='start_check', border=False):
+        #if 'check_started' not in st.session_state:
+            #with st.form(key='start_check', border=False):
                 #st.markdown("<h2 style='color: #00007E; text-align: center;'>Begeleiding bij ISDE aanvraag </h2>", unsafe_allow_html=True)
                 #column1, column2, colum3 = st.columns(3)
                 #with column2:
                     #st.image("Wendy.png", caption="Samen ISDE aanvragen", use_column_width=False)
-                check_started = st.form_submit_button("Start ISDE check")
-                if check_started:
-                    st.session_state.check_started = True
+                #check_started = st.form_submit_button("Start ISDE check")
+                #if check_started:
+                    #st.session_state.check_started = True
 
 
         # 2. Check started 
-        if 'check_started' in st.session_state and st.session_state.measure is None:
+        #if 'check_started' in st.session_state and st.session_state.measure is None:
+        if st.session_state.measure is None:
             st.markdown("<h3 style='color: #00007E; text-align: center;'>Kies een maatregel voor de subsidieaanvraag</h3>", unsafe_allow_html=True)
             # Display clickable icons for each measure option
             #for measure in self.measures:
