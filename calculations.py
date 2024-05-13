@@ -5,7 +5,7 @@ from datetime import datetime
 
 def get_heatpump_subsidy_amount(measure_type):
     # Read RVO PDF and find subsidy amount based on selected measure_type
-    reader = PdfReader('/Users/hugokroonen/Downloads/warmtepompen.pdf') 
+    reader = PdfReader('/Users/hugokroonen/ISDE-regelhulp/warmtepompen.pdf') 
     subsidy_amount = None
     for page_number in range(len(reader.pages)):
         page = reader.pages[page_number] 
