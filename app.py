@@ -105,7 +105,14 @@ class SubsidyApp:
                         st.image(measure.icon_path, width=75)  # Set use_column_width to True for better sizing within the column
                     # Include a checkbox with a hidden label
                         if st.checkbox("", key=measure.name, help=measure.name, label_visibility='visible'):
-                            st.session_state.measure = measure
+                            selected_measure = measure
+            # Button to confirm the selection
+            if st.button('Start ISDE check'):
+                if selected_measure:
+                    st.session_state.measure = selected_measure
+                    st.success(f"Je hebt gekozen voor {st.session_state.measure}")
+                else:
+                    st.error("Selecteer eerst een maatregel.")
 
 
         # 3. Heatpump selected 
