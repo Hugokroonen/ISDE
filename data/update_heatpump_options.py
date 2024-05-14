@@ -40,7 +40,7 @@ for option in options:
     print(option)
 
 # Save the result to a text file
-output_path = 'data/opties.txt'
+output_path = 'data/heatpump_options.txt'
 with open(output_path, 'w') as file:
     for option in options:
         file.write(option + '\n')
