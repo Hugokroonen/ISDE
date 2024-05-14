@@ -1,0 +1,10 @@
+[client]
+showErrorDetails = false
+toolbarMode = "minimal"
+showSidebarNavigation = false
+
+[theme]
+primaryColor = "#00007e"
+backgroundColor = "white"
+base = "light"
+textColor = "black"

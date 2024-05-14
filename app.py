@@ -1,18 +1,20 @@
 import streamlit as st
+from models import SubsidyResult
 from options import *
-from pypdf import PdfReader 
-from calculations import * 
+from pypdf import PdfReader
+from calculations import *
 from questions import questions
 
 st.set_page_config(
-    page_title="ISDE Regelhulp", 
-    page_icon="🏠", 
-    layout="centered", 
-    initial_sidebar_state="collapsed", 
-    menu_items={"Get help" : 'https://www.rvo.nl'}
+    page_title="ISDE Regelhulp",
+    page_icon="🏠",
+    layout="centered",
+    initial_sidebar_state="collapsed",
+    menu_items={"Get help": "https://www.rvo.nl"},
 )
 
-st.markdown("""
+st.markdown(
+    """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -45,34 +47,60 @@ main .block-container {
 .custom-text {
     text-align: center;
 }
+
+.stAlert {
+    font-size: 0.8rem;
+}
 </style>
-""", unsafe_allow_html=True)
-
-
-def display_question(question):
-    return st.write(question)
+""",
+    unsafe_allow_html=True,
+)
 
 def main():
-    if "page" not in st.session_state:
-        st.session_state.page = 0
+    if "questions" not in st.session_state:
+        st.session_state.questions = questions
+        st.session_state.question = questions[0]
+    if "result" not in st.session_state:
+        st.session_state.result = SubsidyResult()
+    
 
-    def prevpage(): st.session_state.page -= 1
-    def nextpage(): st.session_state.page += 1
-    def restart(): st.session_state.page = 0
+    question = st.session_state.question
 
-    for question in questions:
-        if st.session_state.page == question.index:
-            display_question(question)
+    prevpage = lambda: question.on_previous_callback(st.session_state)
+    nextpage = lambda: question.on_next_callback(st.session_state)
+    restart = lambda: question.on_restart_callback(st.session_state)
 
-    col1, col2 = st.columns([1,1])
+    question.display()
+    if question.error:
+        st.error(question.error)
+    if question.success:
+        st.success(question.success)
+    if question.info:
+        st.info(question.info)
+
+
+    col1, col2 = st.columns([1, 1])
     with col1:
-        st.button("Vorige", on_click=prevpage, disabled=(st.session_state.page == 0))
+        st.button(
+            "Vorige", 
+            on_click=prevpage, 
+            disabled=question.previous_disabled(st.session_state)
+        )
     with col2:
-        st.button("Volgende", on_click=nextpage, disabled=(st.session_state.page == 5))
+        st.button(
+            "Volgende", 
+            on_click=nextpage, 
+            disabled=question.next_disabled(st.session_state),
+            type="primary"
+        )
 
-    st.button("Opnieuw beginnen", on_click=restart, disabled=(st.session_state.page == 0))
+    st.button(
+        "Opnieuw beginnen", 
+        on_click=restart, 
+        disabled=question.restart_disabled(st.session_state)
+    )
 
+    st.code(st.session_state.result)
 
-
-if __name__ == '__main__':
-        main()
+if __name__ == "__main__":
+    main()
