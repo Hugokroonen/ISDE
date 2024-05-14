@@ -20,8 +20,8 @@
   
 #### 2.2.2 Glas Isolatie
 - Selecteer of je HR++ of Triple glas hebt
-- Selecteer of je ook isolerende panelen of isolerende deuren hebt 
+- Selecteer of je ook isolerende panelen of isolerende deuren hebt, en in welke U categorie deze vallen. 
 - Selecteer datum uitvoering voor of na 1 januari 2023
 
 ## 3. Subsidie berekenen 
-- Subsidie calculaties. In geval van 2 maatregelen, wordt het isolatiemaatregel(en) bedrag verdubbeld. 
+- Subsidie calculaties op basis van soort, U-waarde, m2 en datum. In geval van 2 maatregelen, wordt het isolatiemaatregel(en) bedrag verdubbeld. 
