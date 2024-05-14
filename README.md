@@ -24,4 +24,4 @@
 - Selecteer datum uitvoering voor of na 1 januari 2023
 
 ## 3. Subsidie berekenen 
-- Subsidie calculaties op basis van soort, U-waarde, m2 en datum. In geval van 2 maatregelen, wordt het isolatiemaatregel(en) bedrag verdubbeld. 
+- Subsidie calculaties op basis van soort, U-waarde, m2 en datum. In geval van 2 maatregelen, wordt het isolatiemaatregel(en) bedrag verdubbeld. Er moet ook rekening gehouden worden met de max en min vierkante meters die in aanmerking komen voor subsidie.
