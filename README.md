@@ -28,7 +28,8 @@
 - Selecteer datum uitvoering voor of na 1 januari 2023
 
 ## 3. Subsidie berekenen 
-- Subsidie calculaties op basis van soort, U-waarde, m2 en datum. In geval van 2 maatregelen, wordt het isolatiemaatregel(en) bedrag verdubbeld. Er moet ook rekening gehouden worden met de max en min vierkante meters die in aanmerking komen voor subsidie.
+- Subsidie calculaties op basis van soort, U-waarde, m2 en datum. In geval van 2 maatregelen, wordt het isolatiemaatregel(en) bedrag verdubbeld (dat betekent, 1 warmtepomp + 1 isolatiemaatregel = 1x warmtepomp bedrag + 2x isolatiemaatregel bedrag, en 2 isolatiemaatregelen = 2x 2 isolatiemaatregelen bedrag. Er moet ook rekening gehouden worden met de max en min vierkante meters die in aanmerking komen voor subsidie.
+
 
 ## 4. Subsidie aanvragen
-Adres/woninggegevens, persoonlijke gegevens, en bestanden uploaden om de aanvraag door ons te laten indiene 
+Adres/woninggegevens, persoonlijke gegevens, en bestanden uploaden om de aanvraag door ons te laten indienen 
