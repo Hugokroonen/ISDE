@@ -1,4 +1,5 @@
-Option(text='Ik weet het merk en type nog niet', value=None)
+HEATPUMP_OPTIONS = [
+Option(text='Ik weet het merk en type nog niet', value=None),
 Option(text='1 Eco Design GmbH ED 300', value='1_eco_design_gmbh_ed_300'),
 Option(text='1 Eco Design GmbH ED 300 2WT', value='1_eco_design_gmbh_ed_300_2wt'),
 Option(text='1 Eco Design GmbH ED 310 compact', value='1_eco_design_gmbh_ed_310_compact'),
@@ -4976,3 +4977,4 @@ Option(text='iDM iPump T 2-8 (G/W)', value='idm_ipump_t_2-8_(g/w)'),
 Option(text='iDM TERRA SW 13; 810336', value='idm_terra_sw_13;_810336'),
 Option(text='iDM Terra SWM 6-17 (G/W)', value='idm_terra_swm_6-17_(g/w)'),
 Option(text='iDM TERRA SW 35 Twin; 810346', value='idm_terra_sw_35_twin;_810346'),
+]
