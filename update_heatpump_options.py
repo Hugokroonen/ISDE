@@ -2,11 +2,13 @@ import re
 from pypdf import PdfReader
 
 # Creating a pdf reader object 
-reader = PdfReader('warmtepompen.pdf')
+reader = PdfReader('/Users/hugokroonen/ISDE-regelhulp/warmtepompen.pdf')
 
 # List to hold all the options
 options = [
-    "Option(text='Ik weet het merk en type nog niet', value=None)"
+    "HEATPUMP_OPTIONS = [",
+    "Option(text='Ik weet het merk en type nog niet', value=None),"
+
 ]
 
 # Regular expression pattern to match 'number-number-R' or 'number-R'
@@ -32,6 +34,7 @@ for page_number in range(len(reader.pages)):
                     options.append(f"Option(text='{extracted_text}', value='{value_text}'),")
                     break
 
+options.append("]")
 # Print the resulting Python list
 for option in options:
     print(option)
