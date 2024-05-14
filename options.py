@@ -1,11 +1,26 @@
+from typing import Any
+from pydantic import BaseModel
+from typing import Optional, Union, Any, List
 from models import *
+
+YES_NO_OPTIONS = [
+    Option(text="Klopt", value=True),
+    Option(text="Klopt niet", value=False)
+]
+
+HOUSE_TYPE_OPTIONS = [
+Option(text="Tussenwoning", value='tussenwoning'),
+Option(text="Hoekwoning", value='hoekwoning'),
+Option(text="Vrijstaande woning", value='vrijstaand'),
+Option(text="Twee onder één kap", value='tweeondereenkap'),
+Option(text="Appartement", value='appartement')
+]
 
 MEASURE_OPTIONS = [
     Option(text='Isolatie', value='insulation', icon_path='insulation_icon.png'),
     Option(text='Warmtepomp', value='heatpump', icon_path='heatpump_icon.png'),
     Option(text='Zonneboiler', value='solar', icon_path = 'solar_icon.png'),
 ]
-
 
 INSULATION_OPTIONS = [
     Option(text='', value=None),
@@ -19,18 +34,24 @@ INSULATION_OPTIONS = [
 
 ]
 
-GLASS_OPTIONS = [
-    Option(text='HR++', value='HR'),
-    Option(text='Triple', value='Triple'),
+GLASS_INSULATION_OPTIONS = [
+    Option(text='HR++ glas, U <= 1,2 W/m2K', value='hr'),
+    Option(text='Triple glas, U <= 0,7 W/m2K', value='triple'),
+    Option(text='Isolerende panelen, U <= 0,7 W/m2K', value='panelen_triple'),
+    Option(text='Isolerende panelen, U <= 1,2 W/m2K', value='panelen_hr'),
+    Option(text='Isolerende deuren, Ud <= 1,5 W/m2K', value='deuren_hr'),
+    Option(text='Isolerende deuren, Ud <= 1,0 W/m2K', value='deuren_triple'),
 ]
 
+DATE_INSULATION_HEATPUMP_OPTIONS = [
+    Option(text="Vóór 1 januari 2024 én minder dan 24 maanden geleden", value='before_2024'),
+    Option(text="Op of na 1 januari 2024", value='after_2024')
+]
 
-#HEATPUMP_OPTIONS = [
-#    Option(text='Ik weet het merk en type nog niet', value=None),
-#    Option(text='Elga Ace 4 kW', value='remeha_4kw'),
-#    Option(text='Elga Ace 6 kW', value='remeha_6kw'),
-#    Option(text='Daikin Altherma Hybride Intergas 8kw', value='daikin_8kw'),
-#]
+DATE_GLASS_INSULATION_OPTIONS = [
+    Option(text="Vóór 1 januari 2023 én minder dan 24 maanden geleden", value='before_2024'),
+    Option(text="Op of na 1 januari 2023", value='after_2024')
+]
 
 HEATPUMP_OPTIONS = [
     Option(text='Ik weet het merk en type nog niet', value=None),
