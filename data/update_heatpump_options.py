@@ -2,7 +2,7 @@ import re
 from pypdf import PdfReader
 
 # Creating a pdf reader object 
-reader = PdfReader('/Users/hugokroonen/ISDE-regelhulp/warmtepompen.pdf')
+reader = PdfReader('data/warmtepompen.pdf')
 
 # List to hold all the options
 options = [
@@ -40,7 +40,7 @@ for option in options:
     print(option)
 
 # Save the result to a text file
-output_path = '/Users/hugokroonen/ISDE-regelhulp/opties.txt'
+output_path = 'data/opties.txt'
 with open(output_path, 'w') as file:
     for option in options:
         file.write(option + '\n')
