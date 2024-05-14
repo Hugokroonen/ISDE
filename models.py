@@ -14,3 +14,6 @@ class Option(BaseModel):
         except (ValueError, AttributeError):
             return False
         return False
+
+class Question(BaseModel):
+    index: int
