@@ -48,9 +48,6 @@ main .block-container {
     text-align: center;
 }
 
-.stAlert {
-    font-size: 0.8rem;
-}
 </style>
 """,
     unsafe_allow_html=True,

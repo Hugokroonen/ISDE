@@ -4,7 +4,6 @@ from enum import Enum
 import streamlit as st
 from display import *
 
-# Base Option class
 class Option(BaseModel):
     text: str
     value: Optional[Union[str, int]] = None
@@ -30,7 +29,8 @@ class SubsidyResult(BaseModel):
     postcode: str | None = None
     pc4: str | None = None
     home_owner: bool | None = None
-
+    professional_installer: bool | None = None
+    recently_applied: bool | None = None
 
 class Question(BaseModel):
     id: str
@@ -141,9 +141,19 @@ class Question(BaseModel):
                 self.clear_messages()
                 state.question = Question.get_by_id("installatiebedrijf", state.questions)
 
+        if self.id == "datum":
+            state.result.recently_applied = self.answer.value
+            if not state.result.recently_applied:
+                self.error = "Helaas, je komt niet in aanmerking"
+                return
+            else:
+                self.clear_messages()
+                state.question = Question.get_by_id("done", state.questions)
+
+
         if self.id == "installatiebedrijf":
-            state.result.home_owner = self.answer.value
-            if not state.result.home_owner:
+            state.result.professional_installer = self.answer.value
+            if not state.result.professional_installer:
                 self.error = "Helaas, je komt niet in aanmerking"
                 return
             else:
