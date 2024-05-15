@@ -145,46 +145,46 @@ woning_info = [
 
 persoonlijke_gegevens = [
     Question(
-            id="voorletters",
-            question_text="Voorletters",
-            help_text = "We hebben je voorletters nodig om de subsidieaanvraag bij het RVO in te dienen",
-            type=QuestionType.TEXT,
-            options=None
+        id="voorletters",
+        question_text="Voorletters",
+        help_text = "We hebben je voorletters nodig om de subsidieaanvraag bij het RVO in te dienen",
+        type=QuestionType.TEXT,
+        options=None
     ),
     Question(
-            id="achternaam",
-            question_text="Achternaam",
-            help_text = "We hebben je achternaam nodig om de subsidieaanvraag bij het RVO in te dienen",
-            type=QuestionType.TEXT,
-            options=None
+        id="achternaam",
+        question_text="Achternaam",
+        help_text = "We hebben je achternaam nodig om de subsidieaanvraag bij het RVO in te dienen",
+        type=QuestionType.TEXT,
+        options=None
     ),
     Question(
-            id="email",
-            question_text="Email",
-            help_text = "We hebben je e-mail nodig, zodat we je op de hoogte kunnen houden van de status van je aanvraag",
-            type=QuestionType.TEXT,
-            options=None
+        id="email",
+        question_text="Email",
+        help_text = "We hebben je e-mail nodig, zodat we je op de hoogte kunnen houden van de status van je aanvraag",
+        type=QuestionType.TEXT,
+        options=None
     ),
     Question(
-            id="telefoonnummer",
-            question_text="Telefoonnummer",
-            help_text = "We hebben je telefoonnummer nodig, zodat we contact met je kunnen opnemen voor advies of aanvullende informatie",
-            type=QuestionType.NUMBER,
-            options=None
+        id="telefoonnummer",
+        question_text="Telefoonnummer",
+        help_text = "We hebben je telefoonnummer nodig, zodat we contact met je kunnen opnemen voor advies of aanvullende informatie",
+        type=QuestionType.NUMBER,
+        options=None
     ),
     Question(
-            id="BSN",
-            question_text="BSN",
-            help_text = "We hebben je BSN nodig om de subsidieaanvraag in te dienen bij het RVO",
-            type=QuestionType.NUMBER,
-            options=None
+        id="BSN",
+        question_text="BSN",
+        help_text = "We hebben je BSN nodig om de subsidieaanvraag in te dienen bij het RVO",
+        type=QuestionType.NUMBER,
+        options=None
     ),
     Question(
-            id="IBAN",
-            question_text="IBAN",
-            help_text = "Het RVO heeft je IBAN nodig om het subsidiebedrag over te maken",
-            type=QuestionType.TEXT,
-            options=None
+        id="IBAN",
+        question_text="IBAN",
+        help_text = "Het RVO heeft je IBAN nodig om het subsidiebedrag over te maken",
+        type=QuestionType.TEXT,
+        options=None
     ),
     Question(
         id="done",

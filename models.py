@@ -117,7 +117,7 @@ class Question(BaseModel):
         if self.id == "koopwoning":
             state.result.home_owner = self.answer.value
             if not state.result.home_owner:
-                self.error = "Helaas, je komt niet in aanmerking"
+                self.error = "Helaas, je komt waarschijnlijk niet in aanmerking"
                 return
             else:
                 self.clear_messages()
@@ -126,7 +126,7 @@ class Question(BaseModel):
         if self.id == "nieuwbouw":
             state.result.home_owner = self.answer.value
             if not state.result.home_owner:
-                self.error = "Helaas, je komt niet in aanmerking"
+                self.error = "Helaas, je komt waarschijnlijk niet in aanmerking"
                 return
             else:
                 self.clear_messages()
@@ -135,7 +135,7 @@ class Question(BaseModel):
         if self.id == "vorige_subsidie":
             state.result.home_owner = self.answer.value
             if not state.result.home_owner:
-                self.error = "Helaas, je komt niet in aanmerking"
+                self.error = "Helaas, je komt waarschijnlijk niet in aanmerking"
                 return
             else:
                 self.clear_messages()
@@ -144,7 +144,7 @@ class Question(BaseModel):
         if self.id == "datum":
             state.result.recently_applied = self.answer.value
             if not state.result.recently_applied:
-                self.error = "Helaas, je komt niet in aanmerking"
+                self.error = "Helaas, je komt waarschijnlijk niet in aanmerking"
                 return
             else:
                 self.clear_messages()
@@ -154,7 +154,7 @@ class Question(BaseModel):
         if self.id == "installatiebedrijf":
             state.result.professional_installer = self.answer.value
             if not state.result.professional_installer:
-                self.error = "Helaas, je komt niet in aanmerking"
+                self.error = "Helaas, je komt waarschijnlijk niet in aanmerking"
                 return
             else:
                 self.clear_messages()
