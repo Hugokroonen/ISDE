@@ -70,7 +70,7 @@ def main():
     nextpage = lambda: question.on_next_callback(st.session_state)
     restart = lambda: question.on_restart_callback(st.session_state)
 
-    display_steps(len(st.session_state.previous_questions) + 1, 10)
+    display_steps(len(st.session_state.previous_questions) + 1, 5)
     question.display()
     if question.error:
         st.error(question.error)
