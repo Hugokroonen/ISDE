@@ -71,7 +71,9 @@ def main():
     restart = lambda: question.on_restart_callback(st.session_state)
 
     display_steps(len(st.session_state.previous_questions) + 1, 5)
+
     question.display()
+    
     if question.error:
         st.error(question.error)
     if question.success:
@@ -79,21 +81,22 @@ def main():
     if question.info:
         st.info(question.info)
 
-
-    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
-    with col2:
-        st.button(
-            "Vorige", 
-            on_click=prevpage, 
-            disabled=question.previous_disabled(st.session_state)
-        )
-    with col3:
-        st.button(
-            "Volgende", 
-            on_click=nextpage, 
-            disabled=question.next_disabled(st.session_state),
-            type="primary"
-        )
+    if question.show_previous_next:
+        col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
+        with col2:
+            st.button(
+                "Vorige", 
+                on_click=prevpage, 
+                disabled=question.previous_disabled(st.session_state)
+            )
+        with col3:
+            st.button(
+                "Volgende", 
+                on_click=nextpage, 
+                disabled=question.next_disabled(st.session_state),
+                type="primary"
+            )
+            
     st.button(
         "Opnieuw beginnen", 
         on_click=restart, 

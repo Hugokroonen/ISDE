@@ -43,7 +43,8 @@ class Question(BaseModel):
     error: str | None = None
     success: str | None = None
     info: str | None = None
-
+    show_previous_next: bool = True
+    
     @classmethod
     def get_by_id(cls, id: str, questions: list['Question']):
         return next(filter(lambda question: question.id == id, questions))
