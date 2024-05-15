@@ -11,7 +11,7 @@ voorwaarden = [
     ),
     Question(
         id="vorige_subsidie",
-        question_text="Je hebt nog niet eerder landelijke subsidie aangevraagd voor deze isolatiemaatregel",
+        question_text="Heb je eerder landelijke subsidie aangevraagd voor deze maatregel?",
         help_text="Je kunt maar één keer ISDE subsidie aanvragen voor een maatregel. Wel mag je deze combineren met lokale subsidies van de gemeente",
         type=QuestionType.SELECTBOX,
         options=YES_NO_OPTIONS
@@ -25,21 +25,21 @@ voorwaarden = [
     ),
     Question(
         id="nieuwbouw",
-        question_text="De maatregel is niet voor een nieuwbouwwoning",
+        question_text="Is de woning gebouwd in 2018 of eerder?",
         help_text="De ISDE is alleen voor bestaande woningen, met een bouwjaar van voor 1 januari 2019",
         type=QuestionType.SELECTBOX,
         options=YES_NO_OPTIONS
     ),
     Question(
         id="installatiebedrijf",
-        question_text="De isolatiemaatregel is geplaatst door een professioneel installateur, en je hebt bewijs van de installatie",
-        help_text = "Je mag de maatregel niet zelf uitvoeren. Bovendien heb je voor de aanvraag een foto van de uitvoering van de werkzaamheden nodig.",
+        question_text="Is de maatregel geïnstalleerd door een professionele installateur?",
+        help_text = "Je mag de maatregel niet zelf uitvoeren. Daarnaast heb je voor de aanvraag een foto van de uitvoering van de werkzaamheden nodig.",
         type=QuestionType.SELECTBOX,
         options=YES_NO_OPTIONS
     ),
     Question(
         id="datum",
-        question_text="De maatregel is niet langer dan 24 maanden geleden aangeschaft",
+        question_text="Is de maatregele in de afgelopen 24 maanden aangeschaft?",
         help_text = "De ISDE subsidie moet binnen 24 maanden na het uitvoeren van de maatregelen aangevraagd worden",
         type=QuestionType.SELECTBOX,
         options=YES_NO_OPTIONS

@@ -121,7 +121,33 @@ class Question(BaseModel):
                 return
             else:
                 self.clear_messages()
-                state.question = Question.get_by_id("done", state.questions)
+                state.question = Question.get_by_id("nieuwbouw", state.questions)
 
+        if self.id == "nieuwbouw":
+            state.result.home_owner = self.answer.value
+            if not state.result.home_owner:
+                self.error = "Helaas, je komt niet in aanmerking"
+                return
+            else:
+                self.clear_messages()
+                state.question = Question.get_by_id("vorige_subsidie", state.questions)
+    
+        if self.id == "vorige_subsidie":
+            state.result.home_owner = self.answer.value
+            if not state.result.home_owner:
+                self.error = "Helaas, je komt niet in aanmerking"
+                return
+            else:
+                self.clear_messages()
+                state.question = Question.get_by_id("installatiebedrijf", state.questions)
+
+        if self.id == "installatiebedrijf":
+            state.result.home_owner = self.answer.value
+            if not state.result.home_owner:
+                self.error = "Helaas, je komt niet in aanmerking"
+                return
+            else:
+                self.clear_messages()
+                state.question = Question.get_by_id("done", state.questions)
 
         state.previous_questions.append(self)
