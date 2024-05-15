@@ -23,11 +23,13 @@ class QuestionType(str, Enum):
     NUMBER = "number"
     TEXT = "text"
     DISPLAY = "display"
+    BOOLEAN = "boolean"
 
 
 class SubsidyResult(BaseModel):
     postcode: str | None = None
     pc4: str | None = None
+    home_owner: bool | None = None
 
 
 class Question(BaseModel):
@@ -56,7 +58,7 @@ class Question(BaseModel):
                 step=1,
                 label=self.question_text, 
                 label_visibility="hidden",
-                value=self.answer or "min"
+                value=self.answer or "min",
             )
         elif self.type == QuestionType.SELECTBOX:
             self.answer = st.selectbox(
@@ -64,40 +66,62 @@ class Question(BaseModel):
                 self.options,
                 label_visibility="hidden", 
                 format_func= lambda option: option.text,
-                help=self.help_text
+                help=self.help_text,
             )
-    
+        elif self.type == QuestionType.BOOLEAN:
+            self.answer = st.checkbox(
+                self.question_text,
+                label_visibility="hidden", 
+                format_func= lambda option: option.text,
+                help=self.help_text,
+            )
+
     def clear_messages(self):
         self.error = None
         self.success = None
         self.info = None
 
-    def on_next_callback(self, state):
-        if self.id == "postcode":
-            if self.answer < 1000 or self.answer > 9999:
-                self.error = "Ongeldige postcode"
-            else:
-                self.clear_messages()
-                state.result.postcode = self.answer
-                state.question = Question.get_by_id("done", state.questions)
-
     def on_previous_callback(self, state):
         self.clear_messages()
 
-        if self.id == "done":
-            state.question = Question.get_by_id("postcode", state.questions)
+        state.question = state.previous_questions[-1]
+        state.previous_questions = state.previous_questions[:-1]
 
     def on_restart_callback(self, state):
         self.clear_messages()
 
         state.result = SubsidyResult()
-        state.question = Question.get_by_id("postcode", state.questions)
+        state.previous_questions = []
+        state.question = Question.get_by_id("koopwoning", state.questions)
 
     def previous_disabled(self, state):
-        return self.id == "postcode"
+        return len(state.previous_questions) == 0
     
     def next_disabled(self, state):
         return self.id == "done"
 
     def restart_disabled(self, state):
-        return self.id == "postcode"
+        return len(state.previous_questions) == 0
+
+    def on_next_callback(self, state):
+        
+        if self.id == "postcode":
+            if self.answer < 1000 or self.answer > 9999:
+                self.error = "Ongeldige postcode"
+                return
+            else:
+                self.clear_messages()
+                state.result.postcode = self.answer
+                state.question = Question.get_by_id("done", state.questions)
+        
+        if self.id == "koopwoning":
+            state.result.home_owner = self.answer.value
+            if not state.result.home_owner:
+                self.error = "Helaas, je komt niet in aanmerking"
+                return
+            else:
+                self.clear_messages()
+                state.question = Question.get_by_id("done", state.questions)
+
+
+        state.previous_questions.append(self)

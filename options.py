@@ -4,8 +4,8 @@ from typing import Optional, Union, Any, List
 from models import Option
 
 YES_NO_OPTIONS = [
-    Option(text="Klopt", value=True),
-    Option(text="Klopt niet", value=False)
+    Option(text="Ja", value=True),
+    Option(text="Nee", value=False)
 ]
 
 HOUSE_TYPE_OPTIONS = [

@@ -18,7 +18,7 @@ voorwaarden = [
     ),
     Question(
         id="koopwoning",
-        question_text="De woning is jouw eigendom",
+        question_text="Ben je eigenaar van de woning?",
         help_text="Je kunt alleen ISDE subsidie aanvragen als je eigenaar bent van de woning en zelf in deze woning woont",
         type=QuestionType.SELECTBOX,
         options=YES_NO_OPTIONS

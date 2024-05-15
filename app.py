@@ -1,5 +1,5 @@
 import streamlit as st
-from models import SubsidyResult
+from models import Question, SubsidyResult
 from options import *
 from pypdf import PdfReader
 from calculations import *
@@ -59,10 +59,11 @@ main .block-container {
 def main():
     if "questions" not in st.session_state:
         st.session_state.questions = questions
-        st.session_state.question = questions[0]
+        st.session_state.question = Question.get_by_id("koopwoning", st.session_state.questions)
     if "result" not in st.session_state:
         st.session_state.result = SubsidyResult()
-    
+    if "previous_questions" not in st.session_state:
+        st.session_state.previous_questions = []
 
     question = st.session_state.question
 
