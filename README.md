@@ -27,13 +27,13 @@
 - Selecteer of je ook isolerende panelen of isolerende deuren hebt, en in welke U categorie deze vallen. 
 - Selecteer datum uitvoering voor of na 1 januari 2023
 
-## 2.3 Vul je e-mail in
+#### 2.3 Vul je e-mail in
 - Voor we het bedrag laten zien, zodat we je kunnen herinneren
 
-## 2.4. Subsidie bedrag  
+#### 2.4. Subsidie bedrag  
 - Subsidie calculaties op basis van soort, U-waarde, m2 en datum. In geval van 2 maatregelen, wordt het isolatiemaatregel(en) bedrag verdubbeld (dat betekent, 1 warmtepomp + 1 isolatiemaatregel = 1x warmtepomp bedrag + 2x isolatiemaatregel bedrag, en 2 isolatiemaatregelen = 2x 2 isolatiemaatregelen bedrag. Er moet ook rekening gehouden worden met de max en min vierkante meters die in aanmerking komen voor subsidie.
 
-## 2.4. Postcode check 
+#### 2.5. Postcode check 
 - Hieruit kunnen we bepalen of de hulp gratis is of niet. 
 
 ## 3. Subsidie aanvragen OF zelf doen (vanaf deze stap is betalen, dus als je een mail krijgt?) 
