@@ -4,6 +4,8 @@ from options import *
 from pypdf import PdfReader
 from calculations import *
 from questions import questions
+from display import display_steps
+
 
 st.set_page_config(
     page_title="ISDE Regelhulp",
@@ -68,6 +70,7 @@ def main():
     nextpage = lambda: question.on_next_callback(st.session_state)
     restart = lambda: question.on_restart_callback(st.session_state)
 
+    display_steps(len(st.session_state.previous_questions) + 1, 10)
     question.display()
     if question.error:
         st.error(question.error)
