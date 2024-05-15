@@ -101,7 +101,7 @@ def main():
         disabled=question.restart_disabled(st.session_state)
     )
 
-    st.code(st.session_state.result)
+    # st.code(st.session_state.result)
 
 if __name__ == "__main__":
     main()
