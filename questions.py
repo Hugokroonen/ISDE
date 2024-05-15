@@ -25,7 +25,7 @@ voorwaarden = [
     ),
     Question(
         id="nieuwbouw",
-        question_text="Is de woning gebouwd in 2018 of eerder?",
+        question_text="Is de woning gebouwd voor 2019?",
         help_text="De ISDE is alleen voor bestaande woningen, met een bouwjaar van voor 1 januari 2019",
         type=QuestionType.SELECTBOX,
         options=YES_NO_OPTIONS
@@ -188,7 +188,7 @@ persoonlijke_gegevens = [
     ),
     Question(
         id="done",
-        question_text="Je bent klaar!",
+        question_text="Je komt waarschijnlijk in aanmerking voor ISDE subsidie",
         help_text = "We gaan voor je aan de slag",
         type=QuestionType.DISPLAY,
         options=None
