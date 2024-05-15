@@ -36,7 +36,8 @@
 #### 2.5. Postcode check 
 - Hieruit kunnen we bepalen of de hulp gratis is of niet. 
 
-## 3. Subsidie aanvragen OF zelf doen (vanaf deze stap is betalen, dus als je een mail krijgt?) 
-Voor nu: je komt in aanmerking voor (gratis) hulp: we sturen je een e-mail met de benodigde gegevens zodat we je kunnen helpen.
+## 3. Subsidie aanvragen OF zelf doen 
+- Voor nu: je komt in aanmerking voor (gratis) hulp: we sturen je een e-mail met de benodigde gegevens zodat we je kunnen helpen.
 (Adres/woninggegevens, persoonlijke gegevens, en bestanden uploaden om de aanvraag door ons te laten indienen) 
+- Vanaf deze stap is betalen, dus als je een mail krijgt?
 
