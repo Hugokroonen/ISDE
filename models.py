@@ -53,28 +53,31 @@ class Question(BaseModel):
         display_title(self.question_text)
         display_description(self.help_text)
         
-        if self.type == QuestionType.NUMBER:
-            self.answer = st.number_input(
-                step=1,
-                label=self.question_text, 
-                label_visibility="hidden",
-                value=self.answer or "min",
-            )
-        elif self.type == QuestionType.SELECTBOX:
-            self.answer = st.selectbox(
-                self.question_text, 
-                self.options,
-                label_visibility="hidden", 
-                format_func= lambda option: option.text,
-                help=self.help_text,
-            )
-        elif self.type == QuestionType.BOOLEAN:
-            self.answer = st.checkbox(
-                self.question_text,
-                label_visibility="hidden", 
-                format_func= lambda option: option.text,
-                help=self.help_text,
-            )
+        col1, col2, col3 = st.columns([1,2,1])
+        
+        with col2:
+            if self.type == QuestionType.NUMBER:
+                self.answer = st.number_input(
+                    step=1,
+                    label=self.question_text, 
+                    label_visibility="hidden",
+                    value=self.answer or "min",
+                )
+            elif self.type == QuestionType.SELECTBOX:
+                self.answer = st.selectbox(
+                    self.question_text, 
+                    self.options,
+                    label_visibility="hidden", 
+                    format_func= lambda option: option.text,
+                    help=self.help_text,
+                )
+            elif self.type == QuestionType.BOOLEAN:
+                self.answer = st.checkbox(
+                    self.question_text,
+                    label_visibility="hidden", 
+                    format_func= lambda option: option.text,
+                    help=self.help_text,
+                )
 
     def clear_messages(self):
         self.error = None

@@ -77,21 +77,20 @@ def main():
         st.info(question.info)
 
 
-    col1, col2 = st.columns([1, 1])
-    with col1:
+    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
+    with col2:
         st.button(
             "Vorige", 
             on_click=prevpage, 
             disabled=question.previous_disabled(st.session_state)
         )
-    with col2:
+    with col3:
         st.button(
             "Volgende", 
             on_click=nextpage, 
             disabled=question.next_disabled(st.session_state),
             type="primary"
         )
-
     st.button(
         "Opnieuw beginnen", 
         on_click=restart, 

@@ -189,7 +189,7 @@ persoonlijke_gegevens = [
     Question(
         id="done",
         question_text="Je komt waarschijnlijk in aanmerking voor ISDE subsidie",
-        help_text = "We gaan voor je aan de slag",
+        help_text = "Dien je aanvraag in op <a href='https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren'>rvo.nl</a>.<br /><br />",
         type=QuestionType.DISPLAY,
         options=None
     )
