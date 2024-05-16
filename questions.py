@@ -241,14 +241,14 @@ persoonlijke_gegevens = [
     ),
     models.Question(
         id="vervolg",
-        question_text="Hoe wil je verdergaan?",
+        question_text="Hoe wil je verder gaan?",
         help_text = "",
         display_fun=display.display_kick_off_request,
         type=models.QuestionType.RADIO,
         options=[
             Option(text="Ik ga zelf mijn aanvraag indienen.", value="self"),
             Option(text="Neem contact met mij op en help me bij mijn aanvraag.", value="contact"),
-            Option(text="Direct aanvragen met Sobolt als intermediair (€ 99,- _no cure, no pay_).", value="request"),
+            Option(text="Aanvragen met Sobolt als intermediair (€ 99,- _no cure, no pay_).", value="request"),
         ],
         show_previous_next = False
     ),

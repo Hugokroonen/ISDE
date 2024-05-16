@@ -27,7 +27,7 @@ def default_question_display(question: models.Question):
     display_title(question.question_text)
     display_description(question.help_text)
     
-    col1, col2, col3 = st.columns([1,2,1])
+    col1, col2, col3 = st.columns([1,4,1])
     
     with col2:
         if question.type == models.QuestionType.NUMBER:

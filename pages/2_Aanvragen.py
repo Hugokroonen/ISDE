@@ -13,10 +13,11 @@ st.set_page_config(
     menu_items={"Get help": "https://energieklus.nl/bewoners"},
 )
 
+
 initialize_styling()
 
-
 def main():
+
     st.session_state.questions = persoonlijke_gegevens
     if "previous_questions" not in st.session_state:
         st.session_state.previous_questions = []
