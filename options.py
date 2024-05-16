@@ -17,9 +17,15 @@ HOUSE_TYPE_OPTIONS = [
 ]
 
 MEASURE_OPTIONS = [
-    Option(text='Isolatie', value='insulation', icon_path='insulation_icon.png'),
     Option(text='Warmtepomp', value='heatpump', icon_path='heatpump_icon.png'),
     Option(text='Zonneboiler', value='solar', icon_path = 'solar_icon.png'),
+    Option(text='BodemIsolatie', value='subfloor_insulation'),
+    Option(text='DakIsolatie', value='roof_insulation'),
+    Option(text='Gevelisolatie', value='facade_insulation'),
+    Option(text='Isolerend glas met kozijnen', value='window_insulation'),
+    Option(text='Spouwmuurisolatie', value='wall_insulation'),
+    Option(text='Vloerisolatie', value='floor_insulation'),
+    Option(text='Zolder- of vlieringvloer', value='attic_insulation'),
 ]
 
 INSULATION_OPTIONS = [

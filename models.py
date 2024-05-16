@@ -1,8 +1,7 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from typing import Callable, Optional, Union, Any, List
 from enum import Enum
 import streamlit as st
-from display import *
 
 class Option(BaseModel):
     text: str
@@ -19,18 +18,26 @@ class Option(BaseModel):
 class QuestionType(str, Enum):
     SLIDER = "slider"
     SELECTBOX = "selectbox"
+    MULTISELECT = "multiselect"
     NUMBER = "number"
     TEXT = "text"
     DISPLAY = "display"
     BOOLEAN = "boolean"
+    RADIO = "radio"
 
+class RequestIntent(str, Enum):
+    SUPPORT = "support"
+    REQUEST = "request"
 
 class SubsidyResult(BaseModel):
+    email: str | None = None
     postcode: str | None = None
     pc4: str | None = None
     home_owner: bool | None = None
     professional_installer: bool | None = None
     recently_applied: bool | None = None
+    measures: list[Option] | None = None
+    intent: RequestIntent | None = None
 
 class Question(BaseModel):
     id: str
@@ -44,41 +51,14 @@ class Question(BaseModel):
     success: str | None = None
     info: str | None = None
     show_previous_next: bool = True
-    
+    display_fun: Callable
+
     @classmethod
     def get_by_id(cls, id: str, questions: list['Question']):
         return next(filter(lambda question: question.id == id, questions))
 
     def display(self):
-
-        display_title(self.question_text)
-        display_description(self.help_text)
-        
-        col1, col2, col3 = st.columns([1,2,1])
-        
-        with col2:
-            if self.type == QuestionType.NUMBER:
-                self.answer = st.number_input(
-                    step=1,
-                    label=self.question_text, 
-                    label_visibility="hidden",
-                    value=self.answer or "min",
-                )
-            elif self.type == QuestionType.SELECTBOX:
-                self.answer = st.selectbox(
-                    self.question_text, 
-                    self.options,
-                    label_visibility="hidden", 
-                    format_func= lambda option: option.text,
-                    help=self.help_text,
-                )
-            elif self.type == QuestionType.BOOLEAN:
-                self.answer = st.checkbox(
-                    self.question_text,
-                    label_visibility="hidden", 
-                    format_func= lambda option: option.text,
-                    help=self.help_text,
-                )
+        self.display_fun(self)
 
     def clear_messages(self):
         self.error = None
@@ -95,8 +75,8 @@ class Question(BaseModel):
         self.clear_messages()
 
         state.result = SubsidyResult()
+        state.question = state.previous_questions[0]
         state.previous_questions = []
-        state.question = Question.get_by_id("koopwoning", state.questions)
 
     def previous_disabled(self, state):
         return len(state.previous_questions) == 0
@@ -108,7 +88,6 @@ class Question(BaseModel):
         return len(state.previous_questions) == 0
 
     def on_next_callback(self, state):
-        
         if self.id == "postcode":
             if self.answer < 1000 or self.answer > 9999:
                 self.error = "Ongeldige postcode"
@@ -162,6 +141,17 @@ class Question(BaseModel):
                 return
             else:
                 self.clear_messages()
-                state.question = Question.get_by_id("done", state.questions)
+                state.question = Question.get_by_id("hoe_verder", state.questions)
+
+
+        if self.id == "measure":
+            state.result.measures = self.answer
+            if len(state.result.measures) == 0:
+                self.error = "Kies ten minste 1 maatregel"
+                return
+            else:
+                self.clear_messages()
+                state.question = Question.get_by_id("prep_done", state.questions)
+
 
         state.previous_questions.append(self)

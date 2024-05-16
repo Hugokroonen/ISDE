@@ -1,10 +1,8 @@
 import streamlit as st
-from models import Question, SubsidyResult
-from options import *
-from pypdf import PdfReader
-from calculations import *
-from questions import voorwaarden
 from display import display_steps
+from models import Question, SubsidyResult
+from questions import questions, persoonlijke_gegevens
+
 from utils import initialize_styling
 
 st.set_page_config(
@@ -17,17 +15,19 @@ st.set_page_config(
 
 initialize_styling()
 
+
 def main():
-    st.session_state.questions = voorwaarden
+    st.session_state.questions = persoonlijke_gegevens
     if "previous_questions" not in st.session_state:
         st.session_state.previous_questions = []
 
     if not(len(st.session_state.previous_questions) > 0 and st.session_state.previous_questions[-1] in st.session_state.questions):
-        st.session_state.question = Question.get_by_id("koopwoning", st.session_state.questions)
+        st.session_state.question = Question.get_by_id("vervolg", st.session_state.questions)
         st.session_state.previous_questions = []
 
     if "result" not in st.session_state:
         st.session_state.result = SubsidyResult()
+
 
     question = st.session_state.question
 
@@ -35,7 +35,11 @@ def main():
     nextpage = lambda: question.on_next_callback(st.session_state)
     restart = lambda: question.on_restart_callback(st.session_state)
 
-    display_steps(len(st.session_state.previous_questions) + 1, 5)
+    if question.id == "go_to_rvo":
+        max_steps = 2
+    else:
+        max_steps = 3
+    display_steps(len(st.session_state.previous_questions) + 1, max_steps)
 
     question.display()
     
@@ -62,16 +66,16 @@ def main():
                 type="primary"
             )
 
-    if question.id != "hoe_verder":
-        st.markdown("""---""")
 
+    st.markdown("""---""")
+
+    st.page_link(
+        "app.py",
+        label=":white_check_mark: :blue[Checken of je in aanmerking komt?]"
+    )
     st.page_link(
         "pages/1_Voorbereiding.py",
         label=":pencil: :blue[Aanvraag voorbereiden?]"
-    )
-    st.page_link(
-        "pages/2_Aanvragen.py",
-        label=":rocket: :blue[Direct aanvragen]"
     )
 
     st.button(
@@ -79,7 +83,6 @@ def main():
         on_click=restart, 
         disabled=question.restart_disabled(st.session_state)
     )
-
     # st.code(st.session_state.result)
 
 if __name__ == "__main__":
