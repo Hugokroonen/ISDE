@@ -13,7 +13,7 @@ voorwaarden = [
     ),
     models.Question(
         id="vorige_subsidie",
-        question_text="Heb je eerder landelijke subsidie aangevraagd voor deze maatregel?",
+        question_text="Is dit de eerste keer dat je landelijke subsidie aanvraagt voor deze maatregel?",
         help_text="Je kunt maar één keer ISDE subsidie aanvragen voor een maatregel. Wel mag je deze combineren met lokale subsidies van de gemeente",
         display_fun=display.default_question_display,
         type=models.QuestionType.SELECTBOX,
