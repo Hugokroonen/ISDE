@@ -54,8 +54,8 @@ voorwaarden = [
     models.Question(
         id="hoe_verder",
         question_text="Goed nieuws! Je komt waarschijnlijk in aanmerking voor ISDE subsidie",
-        help_text = "Kies hieronder hoe je verder wilt. Je kan de aanvraag verder voorbereiden, of helpen je op weg met indienen.",
-        display_fun=display.default_question_display,
+        help_text = "Kies hieronder hoe je verder wilt. Je kan de aanvraag verder voorbereiden, of we helpen je op weg met indienen.",
+        display_fun=display.display_subsidy_amount,
         type=models.QuestionType.DISPLAY,
         options=None,
         show_previous_next = False
@@ -123,7 +123,7 @@ maatregelen = [
         id="prep_done",
         question_text="Je lijkt klaar te zijn voor de aanvraag!",
         help_text = "Klik op 'Direct aanvragen' en we helpen je nog een handje op weg.",
-        display_fun=display.default_question_display,
+        display_fun = display.display_subsidy_amount,
         type=models.QuestionType.DISPLAY,
         options=None,
         show_previous_next = False
@@ -247,7 +247,7 @@ persoonlijke_gegevens = [
         type=models.QuestionType.RADIO,
         options=[
             Option(text="Ik ga zelf mijn aanvraag indienen met DigiD.", value="self"),
-            Option(text="Neem contact met mij op en help me bij mijn aanvraag.", value="contact"),
+            Option(text="Ik maak gebruik van de gratis subsidiehulp vanuit mijn gemeente.", value="contact"),
             Option(text="Aanvragen met Sobolt als intermediair (€ 99,- _no cure, no pay_).", value="request"),
         ],
         show_previous_next = False
