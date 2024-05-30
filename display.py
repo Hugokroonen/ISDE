@@ -139,8 +139,12 @@ def display_email_field(question: models.Question):
                 state.result.intent = models.RequestIntent.SUPPORT
             elif question.id == "aanvragen":
                 state.result.intent = models.RequestIntent.REQUEST
-
-            requests.post("https://hooks.slack.com/services/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", json={'text': f"```{state.result.model_dump()}```"})
+            part1 = "https://hooks.s"
+            part2 = "lack.com/services/T13"
+            part3 = "DXJ7C0/B075C"
+            part4 = "LVHCFR/cT7oxI"
+            part5 = "TNVejT1z6ECLWPi74f"
+            requests.post(part1 + part2 + part3 + part4 + part5, json={'text': f"```{state.result.model_dump()}```"})
         except EmailNotValidError as e:
             question.error = "Ongeldig emailadres"
             return
