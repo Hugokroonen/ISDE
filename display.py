@@ -154,10 +154,10 @@ def display_subsidy_amount(question:models.Question):
         min_subsidy_formatted = f"€{state.result.min_subsidy_amount:,.0f}".replace(',', '.')
         max_subsidy_formatted = f"€{state.result.max_subsidy_amount:,.0f}".replace(',', '.')
         with col2:
-            st.info(f"Je kunt tussen {min_subsidy_formatted} en {max_subsidy_formatted} ISDE ontvangen!")
+            st.info(f"Je kunt tussen {min_subsidy_formatted} en {max_subsidy_formatted} ISDE ontvangen")
     except:
         with col2:
-            st.info(f"Je kunt tussen €40,- en €12.675,- ISDE ontvangen!")
+            st.info(f"Je kunt tussen €40,- en €12.675,- ISDE ontvangen")
 
     display_description(question.help_text)
 
