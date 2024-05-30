@@ -87,8 +87,7 @@ def display_kick_off_request(question: models.Question):
         label_visibility="hidden", 
         format_func= lambda option: option.text,
         help=question.help_text,
-        args=(question,),
-        captions=["", "De deelnemende gemeenten zijn de gemeenten Heusden en Bergen", ""]
+        args=(question,)
     )
 
     def next_callback():
