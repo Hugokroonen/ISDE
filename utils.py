@@ -26,6 +26,8 @@ def initialize_styling():
         text-align: center !important;
     }
 
+    [data-testid="stForm"] {border: 0px}
+
     /* Center images and buttons */
     .stImage, .stButton>button {
         margin: 0 auto !important;
