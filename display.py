@@ -111,21 +111,30 @@ def display_email_field(question: models.Question):
     display_title(question.question_text)
     display_description(question.help_text)
 
-    question.answer = st.text_input(
+    email_answer = st.text_input(
         question.question_text,
         placeholder="E-mail", 
         label_visibility="hidden", 
         help=question.help_text,
     )
 
+    phone_answer = st.text_input(
+        question.question_text,
+        placeholder="Telefoonnummer", 
+        label_visibility="hidden", 
+        help=question.help_text,
+    )
+
+
     def next_callback():
         state = st.session_state
         question.error = None
 
         try:
-            emailinfo = validate_email(question.answer)
+            emailinfo = validate_email(email_answer)
             email = emailinfo.normalized
             state.result.email = email
+            state.result.phone = phone_answer
             if question.id == "contact_me":
                 state.result.intent = models.RequestIntent.SUPPORT
             elif question.id == "aanvragen":

@@ -263,7 +263,7 @@ persoonlijke_gegevens = [
     ),
     models.Question(
         id="contact_me",
-        question_text="Laat hier je email achter en wij nemen binnen 2 werkdagen contact met je op",
+        question_text="Laat hier je email en telefoonnummer achter en wij nemen binnen 2 werkdagen contact met je op",
         help_text = "",
         display_fun=display.display_email_field,
         type=models.QuestionType.TEXT,

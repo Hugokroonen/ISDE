@@ -33,6 +33,7 @@ class RequestIntent(str, Enum):
 
 class SubsidyResult(BaseModel):
     email: str | None = None
+    phone: str | None = None
     postcode: str | None = None
     pc4: str | None = None
     home_owner: bool | None = None
