@@ -32,10 +32,6 @@ def initialize_styling():
         display: block;
     }
 
-    .styles_streamlitAppContainer__w82h8.styles_embed__UIgBb {
-        border: none !important;
-    }
-
     /* Custom class for specifically aligned text if necessary */
     .custom-text {
         text-align: center;
