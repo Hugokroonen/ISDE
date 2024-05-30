@@ -2,6 +2,8 @@ from pydantic import BaseModel, field_validator
 from typing import Callable, Optional, Union, Any, List
 from enum import Enum
 import streamlit as st
+from data.subsidy_amounts import single_measure_subsidy_map, double_measure_subsidy_map
+
 
 class Option(BaseModel):
     text: str
@@ -38,6 +40,8 @@ class SubsidyResult(BaseModel):
     recently_applied: bool | None = None
     measures: list[Option] | None = None
     intent: RequestIntent | None = None
+    min_subsidy_amount: float | None = None
+    max_subsidy_amount: float | None = None
 
 class Question(BaseModel):
     id: str
@@ -146,12 +150,30 @@ class Question(BaseModel):
 
         if self.id == "measure":
             state.result.measures = self.answer
+
             if len(state.result.measures) == 0:
                 self.error = "Kies ten minste 1 maatregel"
                 return
+            
+            if len(state.result.measures) == 1:
+                self.clear_messages()
+                measure_value = state.result.measures[0].value
+
+                if measure_value in single_measure_subsidy_map:
+                    state.result.min_subsidy_amount, state.result.max_subsidy_amount = single_measure_subsidy_map[measure_value]
+
+            # When more than one measure is taken, the subsidy amount of insulation doubles 
             else:
                 self.clear_messages()
-                state.question = Question.get_by_id("prep_done", state.questions)
+                state.result.min_subsidy_amount = 0
+                state.result.max_subsidy_amount = 0
+                for measure in state.result.measures:
+                    if measure.value in double_measure_subsidy_map:
+                        min_amount, max_amount = double_measure_subsidy_map[measure.value]
+                        state.result.min_subsidy_amount += min_amount
+                        state.result.max_subsidy_amount += max_amount 
+                
+            state.question = Question.get_by_id("prep_done", state.questions)
 
 
         state.previous_questions.append(self)

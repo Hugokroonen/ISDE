@@ -18,7 +18,7 @@ def display_description(text: str):
 
 def display_steps(step_count: int, total_steps: int):
     st.markdown(
-        f"<div style='text-align: center; font-size: 0.8rem;margin-bottom: 10px;'><i>Stap {step_count} van {total_steps}</i></div>",
+        f"<div style='text-align: center; font-size: 0.8rem;margin-bottom: 10px;'><i>Vraag {step_count} van {total_steps}</i></div>",
         unsafe_allow_html=True,
     )
 
@@ -88,6 +88,7 @@ def display_kick_off_request(question: models.Question):
         format_func= lambda option: option.text,
         help=question.help_text,
         args=(question,),
+        captions=["", "De deelnemende gemeenten zijn de gemeenten Heusden en Bergen", ""]
     )
 
     def next_callback():
@@ -141,3 +142,23 @@ def display_email_field(question: models.Question):
         state.previous_questions.append(question)
 
     st.button("Versturen", type="primary", on_click=next_callback)
+
+def display_subsidy_amount(question:models.Question):
+    state = st.session_state
+
+    display_title(question.question_text)
+    col1, col2, col3 = st.columns([1,4,1])
+
+
+    try:
+        min_subsidy_formatted = f"€{state.result.min_subsidy_amount:,.0f}".replace(',', '.')
+        max_subsidy_formatted = f"€{state.result.max_subsidy_amount:,.0f}".replace(',', '.')
+        with col2:
+            st.info(f"Je kunt tussen {min_subsidy_formatted} en {max_subsidy_formatted} ISDE ontvangen!")
+    except:
+        with col2:
+            st.info(f"Je kunt tussen €40,- en €12.675,- ISDE ontvangen!")
+
+    display_description(question.help_text)
+
+
