@@ -26,14 +26,16 @@ def initialize_styling():
         text-align: center !important;
     }
 
-    [data-testid="stForm"] {border: 0px}
-
     /* Center images and buttons */
     .stImage, .stButton>button {
         margin: 0 auto !important;
         display: block;
     }
 
+    .styles_streamlitAppContainer__w82h8.styles_embed__UIgBb {
+        border: none;
+    }
+    
     /* Custom class for specifically aligned text if necessary */
     .custom-text {
         text-align: center;
