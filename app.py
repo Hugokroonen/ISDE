@@ -85,5 +85,4 @@ def main():
     # st.code(st.session_state.result)
 
 if __name__ == "__main__":
-    with st.spinner("Subsidiecheck loading..."):
-        main()
+    main()
