@@ -127,7 +127,7 @@ class Question(BaseModel):
                 return
             else:
                 self.clear_messages()
-                state.question = Question.get_by_id("installatiebedrijf", state.questions)
+                state.question = Question.get_by_id("datum", state.questions)
 
         if self.id == "datum":
             state.result.recently_applied = self.answer.value
@@ -136,7 +136,7 @@ class Question(BaseModel):
                 return
             else:
                 self.clear_messages()
-                state.question = Question.get_by_id("done", state.questions)
+                state.question = Question.get_by_id("installatiebedrijf", state.questions)
 
 
         if self.id == "installatiebedrijf":
