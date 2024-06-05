@@ -45,7 +45,7 @@ voorwaarden = [
     ),
     models.Question(
         id="datum",
-        question_text="Is de maatregele in de afgelopen 24 maanden aangeschaft?",
+        question_text="Is de maatregel in de afgelopen 24 maanden uitgevoerd?",
         help_text = "De ISDE subsidie moet binnen 24 maanden na het uitvoeren van de maatregelen aangevraagd worden",
         display_fun=display.default_question_display,
         type=models.QuestionType.SELECTBOX,
