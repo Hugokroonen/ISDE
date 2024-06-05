@@ -37,8 +37,8 @@ voorwaarden = [
     ),
     models.Question(
         id="installatiebedrijf",
-        question_text="Is de maatregel geïnstalleerd door een professionele installateur?",
-        help_text = "Je mag de maatregel niet zelf uitvoeren. Daarnaast heb je voor de aanvraag een foto van de uitvoering van de werkzaamheden nodig.",
+        question_text="Is/wordt de maatregel geïnstalleerd door een installateur?",
+        help_text = "Je mag de maatregel niet zelf uitvoeren om ISDE subsidie te krijgen. Zorg daarnaast dat je foto's verzamelt van de werkzaamheden.",
         display_fun=display.default_question_display,
         type=models.QuestionType.SELECTBOX,
         options=YES_NO_OPTIONS
@@ -54,7 +54,7 @@ voorwaarden = [
     models.Question(
         id="hoe_verder",
         question_text="Goed nieuws! Je komt waarschijnlijk in aanmerking voor ISDE subsidie",
-        help_text = "Kies hieronder hoe je verder wilt. Je kan de aanvraag verder voorbereiden, of we helpen je op weg met indienen.",
+        help_text = "Kies hieronder hoe je verder wilt. Je kan de aanvraag verder voorbereiden, en een betere schatting krijgen van het ISDE subsidiebedrag. Of, we kunnen je direct helpen met aanvragen.",
         display_fun=display.display_subsidy_amount,
         type=models.QuestionType.DISPLAY,
         options=None,
@@ -263,7 +263,7 @@ persoonlijke_gegevens = [
     ),
     models.Question(
         id="contact_me",
-        question_text="Laat hier je email en telefoonnummer achter en wij nemen binnen 2 werkdagen contact met je op",
+        question_text="Laat hier je email adres en telefoonnummer achter en wij nemen binnen 2 werkdagen contact met je op",
         help_text = "",
         display_fun=display.display_email_field,
         type=models.QuestionType.TEXT,
