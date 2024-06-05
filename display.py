@@ -50,6 +50,7 @@ def default_question_display(question: models.Question):
                 question.question_text, 
                 question.options,
                 label_visibility="hidden", 
+                placeholder="Kies optie(s)",
                 format_func= lambda option: option.text,
                 help=question.help_text,
             )
