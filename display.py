@@ -141,7 +141,7 @@ def display_email_field(question: models.Question):
             elif question.id == "aanvragen":
                 state.result.intent = models.RequestIntent.REQUEST
             part1 = "https://n8n.sobo"
-            part2 = "lt.com/webhook/b"
+            part2 = "lt.com/webhook-test/b"
             part3 = "45a365b-9340-47f"
             part4 = "2-8c6d-0"
             part5 = "95f9994fa7c"
