@@ -140,11 +140,11 @@ def display_email_field(question: models.Question):
                 state.result.intent = models.RequestIntent.SUPPORT
             elif question.id == "aanvragen":
                 state.result.intent = models.RequestIntent.REQUEST
-            part1 = "https://hooks.s"
-            part2 = "lack.com/services/T13"
-            part3 = "DXJ7C0/B075C"
-            part4 = "LVHCFR/cT7oxI"
-            part5 = "TNVejT1z6ECLWPi74f"
+            part1 = "https://n8n.sobo"
+            part2 = "lt.com/webhook/b"
+            part3 = "45a365b-9340-47f"
+            part4 = "2-8c6d-0"
+            part5 = "95f9994fa7c"
             requests.post(part1 + part2 + part3 + part4 + part5, json={'text': f"```{state.result.model_dump()}```"})
         except EmailNotValidError as e:
             question.error = "Ongeldig emailadres"
